@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'dashboard admin')
+
 @section('content')
 <div class="container my-4">
     <!--Print message-->
@@ -30,7 +32,7 @@
                 <td>{{ $post->post_date }}</td>
                 <td>
                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary">Show</a>
-                    <a href="" class="btn btn-success">Edit</a>
+                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Edit</a>
                     <a href="" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
