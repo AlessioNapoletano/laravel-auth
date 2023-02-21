@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+
+@section('title', 'Post ')
+
 @section('content')
 
 <div class="container my-5">
