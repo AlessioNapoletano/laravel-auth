@@ -58,9 +58,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        return view('admin.posts.create');
+        return view('admin.posts.create', compact('post'));
     }
 
     /**
@@ -97,24 +97,27 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $dataValidate = $request->validate($this->rules, $this->messages);
+        $post->update($dataValidate);
+        
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
