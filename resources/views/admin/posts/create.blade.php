@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Create new Post')
+
 @section('content')
     <div class="container my-5">
         @include('admin.posts.partials.error')
