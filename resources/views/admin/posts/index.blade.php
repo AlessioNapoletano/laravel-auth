@@ -1,7 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container my-4">
+    <!--Print message-->
+    @if (session('message'))
+        <div class="alert alert-success mb-3">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
             <tr>

@@ -19,7 +19,7 @@ class PostController extends Controller
 
      protected $rules = 
      [
-        'title' => ['required', 'string', 'min:2', 'max:200', 'unique:title'],
+        'title' => ['required', 'string', 'min:2', 'max:200'],
         'content' => ['required', 'string', 'min:2'],
         'post_date' => ['required']
      ];
@@ -71,15 +71,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $dataValidate = $request->validate($this->rules, $this->messages);
-
+        
         $dataValidate['author'] = Auth::user()->name;
         $dataValidate['slug'] = Str::slug($dataValidate['title']);
         $newPost = new Post();
         $newPost->fill($dataValidate);
         $newPost->save();
 
-        return redirect()->route('admin.posts.index')->with('message', 'Il post è stato creato con successo');
+        return redirect()->route('admin.posts.index')->with('message', "Il post $newPost->title è stato creato con successo");
     }
 
     /**
