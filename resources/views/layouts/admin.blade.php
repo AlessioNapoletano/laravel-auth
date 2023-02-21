@@ -12,6 +12,8 @@
         @yield('title')    
     </title>
 
+    <!--icon title-->
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/889/889669.png" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
