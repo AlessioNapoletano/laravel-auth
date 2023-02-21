@@ -14,7 +14,7 @@
                 </h5>
                 <p class="card-text">{{ $post->content }}</p>
                 <div class="button text-center">
-                    <a href="" class="btn btn-success">Edit</a>
+                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Edit</a>
                     <a href="" class="btn btn-danger">Delete</a>
                 </div>
                 
