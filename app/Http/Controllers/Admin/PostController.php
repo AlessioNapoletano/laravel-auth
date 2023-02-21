@@ -28,7 +28,7 @@ class PostController extends Controller
      * error messages in case of negative validation
      * messaggi d'errore in caso di validazione negativa
      */ 
-     protected $message = 
+     protected $messages = 
      [
         'title.required' => 'E\' necessario inserire un titolo',
         'title.min' => 'Il titolo deve contenere almeno 2 caratteri',
@@ -71,21 +71,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate(
-            [
-                'title' => 'required|unique:posts',
-                'post_date' => 'required',
-                'content' => 'required',
-            ],
-            [
+        $dataValidate = $request->validate($this->rules, $this->messages);
 
-            ]
-        );
-
-        $data['author'] = Auth::user()->name;
-        $data['slug'] = Str::slug($data['title']);
+        $dataValidate['author'] = Auth::user()->name;
+        $dataValidate['slug'] = Str::slug($dataValidate['title']);
         $newPost = new Post();
-        $newPost->fill($data);
+        $newPost->fill($dataValidate);
         $newPost->save();
 
         return redirect()->route('admin.posts.index')->with('message', 'Il post è stato creato con successo');
