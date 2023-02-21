@@ -11,6 +11,37 @@ use Illuminate\Support\Str as Str;
 
 class PostController extends Controller
 {
+
+    /**
+     * Validation Rule
+     * Regole di validazione
+     */
+
+     protected $rules = 
+     [
+        'title' => ['required', 'string', 'min:2', 'max:200', 'unique:title'],
+        'content' => ['required', 'string', 'min:2'],
+        'post_date' => ['required']
+     ];
+
+     /**
+     * error messages in case of negative validation
+     * messaggi d'errore in caso di validazione negativa
+     */ 
+     protected $message = 
+     [
+        'title.required' => 'E\' necessario inserire un titolo',
+        'title.min' => 'Il titolo deve contenere almeno 2 caratteri',
+        'title.max' => 'Il titolo può contenere al massimo 200 caratteri',
+        'title.unique' => 'Crea un titolo con nome diverso, in quanto nell\' archivio esiste già questo titolo',
+
+        'content.required' => 'E\' necessario inserire un contenuto',
+        'content.min' => 'Il contenuto deve contenere almeno 2 caratteri',
+
+        'post_date.required' => 'E\' necessario inserire la data di creazione del post'
+     ];
+
+
     /**
      * Display a listing of the resource.
      *
