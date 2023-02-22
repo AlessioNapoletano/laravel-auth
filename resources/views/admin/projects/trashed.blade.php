@@ -4,9 +4,9 @@
 
 @section('content')
 
-<section class="trashed-projects">
+<section class="trashed-projects py-5 mb-3">
     <div class="container">
-        <table class="table">
+        <table class="table bg-dark text-light">
             <thead>
                 <tr>
                     <th scope="col">#id</th>
