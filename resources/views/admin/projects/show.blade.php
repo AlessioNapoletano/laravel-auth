@@ -13,9 +13,13 @@
 
         <div class="card">
             <div class="card-header text-center">
-              Featured
+                <p class="fw-bold">
+                    {{ $project->author }}
+                </p>
+              
             </div>
             <div class="card-body">
+                <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}">
                 <h5 class="card-title text-center">
                     <span class="fw-bold">
                         {{ $project->title }}
