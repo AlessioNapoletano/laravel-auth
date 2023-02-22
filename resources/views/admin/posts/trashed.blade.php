@@ -15,7 +15,10 @@
                     <th scope="col">Post Date</th>
                     <th scope="col">Delete at</th>
                     <th scope="col">
-                        <a href="" class="btn btn-primary px-5">Ripristina tutti i post</a>
+                        <form action="{{ route('admin.restore-all') }}" method="POST">
+                        @csrf
+                            <button class="btn btn-primary">Ripristina Tutti i Post</button>
+                        </form>
                     </th>
                 </tr>
             </thead>
@@ -28,7 +31,10 @@
                     <td>{{ $post->post_date }}</td>
                     <td>{{ $post->deleted_at }}</td>
                     <td>
-                        <a href="" class="btn btn-primary">Ripristina</a>
+                        <form class="d-inline" action="{{ route('admin.restore', $post->id)}}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary">Ripristina</button>
+                        </form> 
                     </td>
                 </tr>
                 @endforeach
