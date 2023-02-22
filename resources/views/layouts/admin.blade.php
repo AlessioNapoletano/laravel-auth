@@ -50,6 +50,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.trashed-projects') }}">{{ __('Trashed Projects') }}</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.posts.index') }}">{{ __('Post') }}</a>
                         </li>
 
