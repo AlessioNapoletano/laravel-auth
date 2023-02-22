@@ -89,4 +89,31 @@ class ProjectController extends Controller
     {
         return view('admin.projects.show', compact('project'));
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Project $project)
+    {
+        return view('admin.projects.edit', compact('project'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Project $project)
+    {
+        $dataValidate = $request->validate($this->rules, $this->messages);
+        $project->update($dataValidate);
+        
+        return redirect()->route('admin.projects.show', $project->id)->with('message', "'Record $project->title è stato modificato con successo")->with('message-class', 'success');
+    }
+
 }
