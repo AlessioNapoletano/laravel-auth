@@ -23,7 +23,7 @@
                 <th scope="col">Author</th>
                 <th scope="col">Post Date</th>
                 <th scope="col">
-                    <a href="" class="btn btn-primary px-5">Create new project</a>
+                    <a href="{{ route('admin.projects.create')}}" class="btn btn-primary px-5">Create new project</a>
                 </th>
             </tr>
         </thead>
