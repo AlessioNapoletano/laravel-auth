@@ -20,7 +20,8 @@ class ProjectController extends Controller
      [
         'title' => ['required', 'string', 'min:2', 'max:200'],
         'content' => ['required', 'string', 'min:2'],
-        'post_date' => ['required']
+        'post_date' => ['required'],
+        'cover_image' =>['required']
      ];
 
      /**
