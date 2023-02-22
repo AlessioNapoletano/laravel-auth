@@ -129,5 +129,44 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index')->with('message', "'Record $project->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
     }
 
+     /**
+     * forceDelete method for delete record permanenttly
+     * Metodo forceDelete per eliminare definitivamente un record   
+     */
+    public function forceDelete($id) {
+        $project = Project::withTrashed()->findOrFail($id);
+        $project->forceDelete();
+
+        return redirect()->route('admin.projects.index')->with('message', "Record $project->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
+    }
+
+    /**
+     * trashed method for records deleted but not permanently
+     * metodo trashed per record eliminati ma non definitivamente
+     */
+    public function trashed() {
+        $projectTrashed = Project::onlyTrashed()->get();
+        return view('admin.projects.trashed', compact('projectTrashed'));
+    }
+
+    /**
+     * restore method to recover trashed records
+     * Metodo restore per recuperare record trashed
+     */
+    public function restore($id) {
+        Project::where('id', $id)->withTrashed()->restore();
+        return redirect()->route('admin.projects.index')->with('message', "'Record è stato ripristinato con successo dal cestino")->with('message-class', 'primary');;
+    }
+
+    /**
+     * restoreAll method to recover all trashed records
+     * Metodo restoreAll per recuperare Tutti i record trashed
+     */
+    public function restoreAll() {
+        Project::withTrashed()->restore();
+        return redirect()->route('admin.projects.index')->with('message', 'Tutti i post sono stati ripristinati dal cestino')->with('message-class', 'success');;
+
+    }
+
 
 }
