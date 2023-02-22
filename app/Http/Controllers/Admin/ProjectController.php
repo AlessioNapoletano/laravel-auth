@@ -113,9 +113,11 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $dataValidate = $request->validate($this->rules, $this->messages);
+        $dataValidate['author'] = Auth::user()->name;
+        $dataValidate['slug'] = Str::slug($dataValidate['title']);
         $project->update($dataValidate);
         
-        return redirect()->route('admin.projects.show', $project->slug)->with('message', "'Record $project->title è stato modificato con successo")->with('message-class', 'success');
+        return redirect()->route('admin.projects.show', $project->slug)->with('message', "il progetto '$project->title' è stato modificato con successo")->with('message-class', 'success');
     }
 
     /**
@@ -128,7 +130,7 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('message', "'Record $project->title è stato spostato nel cestino")->with('message-class', 'danger');
+        return redirect()->route('admin.projects.index')->with('message', "il progetto '$project->title' è stato spostato nel cestino")->with('message-class', 'danger');
     }
 
      /**
@@ -138,7 +140,7 @@ class ProjectController extends Controller
     public function forceDelete(Project $project) {
         $project->forceDelete();
 
-        return redirect()->route('admin.projects.index')->with('message', "Record $project->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
+        return redirect()->route('admin.projects.index')->with('message', "Il progetto '$project->title' è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
     }
 
     /**
@@ -156,7 +158,7 @@ class ProjectController extends Controller
      */
     public function restore(Project $project) {
         $project->restore();
-        return redirect()->route('admin.projects.index')->with('message', "'Record è stato ripristinato con successo dal cestino")->with('message-class', 'primary');;
+        return redirect()->route('admin.projects.index')->with('message', "il progetto '$project->title' è stato ripristinato con successo")->with('message-class', 'primary');;
     }
 
     /**
@@ -165,7 +167,7 @@ class ProjectController extends Controller
      */
     public function restoreAll() {
         Project::withTrashed()->restore();
-        return redirect()->route('admin.projects.index')->with('message', 'Tutti i post sono stati ripristinati dal cestino')->with('message-class', 'success');;
+        return redirect()->route('admin.projects.index')->with('message', 'Tutti i progetti sono stati ripristinati dal cestino')->with('message-class', 'success');;
 
     }
 
