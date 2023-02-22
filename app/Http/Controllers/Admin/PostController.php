@@ -132,4 +132,8 @@ class PostController extends Controller
 
         return redirect()->route('admin.posts.index')->with('message', "'Record $post->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
     }
+
+    public function trashed() {
+        return view('admin.posts.trashed');
+    }
 }
