@@ -41,8 +41,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.posts.index') }}">{{ __('Post') }}</a>
+                            <a class="nav-link" href="{{ route('admin.posts.index') }}">{{ __('Post') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.trashed') }}">{{ __('Trashed Posts') }}</a>
                         </li>
                     </ul>
 
