@@ -78,4 +78,15 @@ class ProjectController extends Controller
 
         return redirect()->route('admin.projects.index')->with('message', "Il post $newProject->title è stato creato con successo")->with('message-class', 'success');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Project $project)
+    {
+        return view('admin.projects.show', compact('project'));
+    }
 }
