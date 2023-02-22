@@ -93,7 +93,7 @@
             </div>
         </nav>
 
-        <main>
+        <main class="">
             @yield('content')
         </main>
         @yield('script')
