@@ -117,7 +117,7 @@ class PostController extends Controller
         $dataValidate = $request->validate($this->rules, $this->messages);
         $post->update($dataValidate);
         
-        return redirect()->route('admin.posts.show', $post->id);
+        return redirect()->route('admin.posts.show', $post->id)->with('message', "'Record $post->title è stato modificato con successo")->with('message-class', 'success');
     }
 
     /**
