@@ -134,6 +134,7 @@ class PostController extends Controller
     }
 
     public function trashed() {
-        return view('admin.posts.trashed');
+        $postsTrashed = Post::onlyTrashed()->get();
+        return view('admin.posts.trashed', compact('postsTrashed'));
     }
 }
