@@ -36,7 +36,7 @@
                             <button class="btn btn-primary">Restore</button>
                         </form> 
 
-                        <form class="d-inline" action="{{ route('admin.force-delete', $post->id)}}" method="POST">
+                        <form class="d-inline delete" action="{{ route('admin.force-delete', $post->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
 
@@ -49,4 +49,8 @@
           </table>
     </div>
 </section>
+@endsection
+
+@section('script')
+    @vite('resources/js/confirmDelete.js')
 @endsection

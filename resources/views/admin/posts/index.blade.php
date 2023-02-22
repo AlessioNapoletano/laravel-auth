@@ -10,6 +10,10 @@
             {{ session('message') }}
         </div>
     @endif
+    
+    @if (session('alert-message'))
+        <div id="popup_message" class="d-none" data-type="{{ session('alert-type') }}" data-message="{{ session('alert-message') }}"></div>
+    @endif
 
     <table class="table">
         <thead>
@@ -34,7 +38,7 @@
                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary">Show</a>
                     <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Edit</a>
 
-                    <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
+                    <form class="d-inline delete" action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
 
@@ -48,4 +52,8 @@
         </tbody>
       </table>
 </div>
+@endsection
+
+@section('script')
+    @vite('resources/js/confirmDelete.js')
 @endsection
