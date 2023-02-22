@@ -8,7 +8,7 @@
     <div class="row">
         @foreach ($posts as $post)
             <div class="col-6">
-                <div class="card mb-4">
+                <div class="card mb-4 d-flex align-items-stretch">
                     <div class="card-header d-flex justify-content-between">
                         <span class="fw-bold">
                             {{ $post->author }}
