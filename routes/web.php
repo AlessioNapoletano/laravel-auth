@@ -21,8 +21,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
+
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/posts/trashed', [AdminPostController::class, 'trashed'])->name('trashed');
     Route::resource('posts', AdminPostController::class);
 });
 
