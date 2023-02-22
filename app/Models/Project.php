@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['title', 'slug', 'author', 'content', 'post_date'];
+    protected $fillable = ['title', 'slug', 'author', 'cover_image', 'content', 'post_date'];
 
     /**
     * Get the route key for the model.
