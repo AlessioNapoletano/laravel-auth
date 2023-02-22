@@ -56,17 +56,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ (Route::currentRouteName() == 'admin.trashed-projects') ? 'fw-bold' : ''  }}" href="{{ route('admin.trashed-projects') }}">{{ __('Trashed Projects') }}</a>
                         </li>
-
-                        <!--RouteName: 'admin.posts.index'-->
-                        <li class="nav-item">
-                            <a class="nav-link {{ (Route::currentRouteName() == 'admin.posts.index') ? 'fw-bold' : ''  }}" href="{{ route('admin.posts.index') }}">{{ __('Post') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.trashed') }}">{{ __('Trashed Posts') }}</a>
-                        </li>
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
