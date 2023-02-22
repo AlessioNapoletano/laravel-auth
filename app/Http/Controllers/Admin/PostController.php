@@ -133,6 +133,13 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index')->with('message', "'Record $post->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
     }
 
+    public function forceDelete($id) {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->forceDelete();
+
+        return redirect()->route('admin.posts.index')->with('message', "Record $post->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
+    }
+
     /**
      * trashed method for records deleted but not permanently
      * metodo trashed per record eliminati ma non definitivamente
@@ -151,6 +158,10 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index')->with('message', "'Record è stato ripristinato con successo dal cestino")->with('message-class', 'primary');;
     }
 
+    /**
+     * restoreAll method to recover all trashed records
+     * Metodo restoreAll per recuperare Tutti i record trashed
+     */
     public function restoreAll() {
         Post::withTrashed()->restore();
         return redirect()->route('admin.posts.index')->with('message', 'Tutti i post sono stati ripristinati dal cestino')->with('message-class', 'success');;
