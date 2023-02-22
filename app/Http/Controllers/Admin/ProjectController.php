@@ -114,7 +114,7 @@ class ProjectController extends Controller
         $dataValidate = $request->validate($this->rules, $this->messages);
         $project->update($dataValidate);
         
-        return redirect()->route('admin.projects.show', $project->id)->with('message', "'Record $project->title è stato modificato con successo")->with('message-class', 'success');
+        return redirect()->route('admin.projects.show', $project->slug)->with('message', "'Record $project->title è stato modificato con successo")->with('message-class', 'success');
     }
 
     /**
@@ -127,7 +127,7 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('message', "'Record $project->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
+        return redirect()->route('admin.projects.index')->with('message', "'Record $project->title è stato spostato nel cestino")->with('message-class', 'danger');
     }
 
      /**
