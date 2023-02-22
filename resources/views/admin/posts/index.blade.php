@@ -6,7 +6,7 @@
 <div class="container my-4">
     <!--Print message-->
     @if (session('message'))
-        <div class="alert alert-success mb-3">
+        <div class="alert alert-{{session('message-class')}} mb-3">
             {{ session('message') }}
         </div>
     @endif
@@ -33,7 +33,15 @@
                 <td>
                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary">Show</a>
                     <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+
+                    <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <button class="btn btn-danger">
+                        Delete
+                    </button>
+                    </form>
                 </td>
             </tr>
             @endforeach
