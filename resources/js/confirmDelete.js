@@ -1,4 +1,4 @@
-var popup = document.getElementById('popup_message');
+let popup = document.getElementById('popup_message');
 
 if (popup) {
   // show a message in a toast
