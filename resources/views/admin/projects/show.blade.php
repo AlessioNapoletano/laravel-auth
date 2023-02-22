@@ -23,9 +23,9 @@
                 </h5>
                 <p class="card-text">{{ $project->content }}</p>
                 <div class="button text-center">
-                    <a href="" class="btn btn-success">Edit</a>
+                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-success">Edit</a>
 
-                    <form action="" method="POST" class="d-inline">
+                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
 
@@ -40,4 +40,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @vite('resources/js/confirmDelete.js')
 @endsection
