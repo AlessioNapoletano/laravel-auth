@@ -6,24 +6,30 @@
 
 <div class="container my-5">
     <div class="row">
-        @foreach ($posts as $post)
+        @foreach ($projects as $project)
             <div class="col-6">
                 <div class="card mb-4 d-flex align-items-stretch">
                     <div class="card-header d-flex justify-content-between">
                         <span class="fw-bold">
-                            {{ $post->author }}
+                            {{ $project->author }}
                         </span>
                         <span>
-                            {{ $post->post_date }}
+                            {{ $project->post_date }}
                         </span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title fw-bold text-center">{{ $post->title }}</h5>
-                        <p class="card-text">{{ $post->content }}</p>
+                        <h5 class="card-title fw-bold text-center">{{ $project->title }}</h5>
+                        <p class="card-text">{{ $project->content }}</p>
                     </div>
                 </div>
             </div>  
         @endforeach
+    </div>
+
+    <div class="pagination">
+        <span>
+            {{ $projects->links() }}
+        </span>
     </div>
 </div>
 
