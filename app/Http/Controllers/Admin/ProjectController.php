@@ -116,4 +116,18 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.show', $project->id)->with('message', "'Record $project->title è stato modificato con successo")->with('message-class', 'success');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Project $project)
+    {
+        $project->delete();
+
+        return redirect()->route('admin.projects.index')->with('message', "'Record $project->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
+    }
+
+
 }
