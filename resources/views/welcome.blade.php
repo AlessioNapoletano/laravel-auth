@@ -7,7 +7,7 @@
 <div class="container mb-5 py-5">
     <div class="row">
         @foreach ($projects as $project)
-            <div class="col-6 d-flex flex-wrap align-items-stretch">
+            <div class="col-4 d-flex flex-wrap align-items-stretch">
                 <div class="card mb-5">
                     <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}">
                     <div class="card-body">
