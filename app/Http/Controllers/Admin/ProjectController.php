@@ -38,7 +38,9 @@ class ProjectController extends Controller
         'content.required' => 'E\' necessario inserire un contenuto',
         'content.min' => 'Il contenuto deve contenere almeno 2 caratteri',
 
-        'post_date.required' => 'E\' necessario inserire la data di creazione del progetto'
+        'post_date.required' => 'E\' necessario inserire la data di creazione del progetto',
+
+        'cover_image' => 'E\' necessario inserire il path dell\'immagine cover del progetto'
      ];
 
     /**
