@@ -51,7 +51,15 @@
             @endforeach
         </tbody>
       </table>
+
+    <div class="pagination">
+        <span>
+            {{ $projects->links() }}
+        </span>
+    </div>
+      
 </div>
+
 @endsection
 
 @section('script')

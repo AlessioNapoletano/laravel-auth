@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post as Post;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {
     public function index() {
-        $posts = Post::all();
-        return view('welcome', compact('posts'));
+        $projects = Project::paginate(15);
+        return view('welcome', compact('projects'));
     }
 }
