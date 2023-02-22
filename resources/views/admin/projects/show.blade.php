@@ -25,7 +25,7 @@
                 <div class="button text-center">
                     <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-success">Edit</a>
 
-                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline">
+                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline delete">
                     @csrf
                     @method('DELETE')
 
