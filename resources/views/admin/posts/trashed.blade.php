@@ -33,7 +33,14 @@
                     <td>
                         <form class="d-inline" action="{{ route('admin.restore', $post->id)}}" method="POST">
                             @csrf
-                            <button class="btn btn-primary">Ripristina</button>
+                            <button class="btn btn-primary">Restore</button>
+                        </form> 
+
+                        <form class="d-inline" action="{{ route('admin.force-delete', $post->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger">Delete</button>
                         </form> 
                     </td>
                 </tr>
