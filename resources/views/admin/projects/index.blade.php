@@ -3,7 +3,7 @@
 @section('title', 'Projects')
 
 @section('content')
-<div class="container my-4">
+<div class="container py-4">
     <!--Print message-->
     @if (session('message'))
         <div class="alert alert-{{session('message-class')}} mb-3">

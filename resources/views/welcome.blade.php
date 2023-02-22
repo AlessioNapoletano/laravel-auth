@@ -4,22 +4,35 @@
 
 @section('content')
 
-<div class="container my-5">
+<div class="container mb-5 py-5">
     <div class="row">
         @foreach ($projects as $project)
-            <div class="col-6">
-                <div class="card mb-4 d-flex align-items-stretch">
-                    <div class="card-header d-flex justify-content-between">
-                        <span class="fw-bold">
-                            {{ $project->author }}
-                        </span>
-                        <span>
-                            {{ $project->post_date }}
-                        </span>
-                    </div>
+            <div class="col-6 d-flex flex-wrap align-items-stretch">
+                <div class="card mb-5">
+                    <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold text-center">{{ $project->title }}</h5>
+                        <h5 class="card-title fw-bold text-center mb-3">
+                            {{ $project->title }}
+                        </h5>
+
+                        <!--Data di creazione del progetto-->
+                        <p class="card-text text-end">
+                            <span class="fw-bold">
+                                Data Di Creazione: 
+                            </span>
+
+                            <span>
+                                {{ $project->post_date}}
+                            </span>
+                        </p>
+
+                        <!--Descrizione del progetto-->
                         <p class="card-text">{{ $project->content }}</p>
+                        
+                    </div>
+
+                    <div class="button text-center mb-2">
+                        <a href="#" class="btn btn-primary">show</a>
                     </div>
                 </div>
             </div>  

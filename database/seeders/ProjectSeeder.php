@@ -22,6 +22,7 @@ class ProjectSeeder extends Seeder
             $newProject->title = $faker->unique()->realTextBetween(5, 20);
             $newProject->slug = Str::slug($newProject->title);
             $newProject->author = $faker->name();
+            $newProject->cover_image = $faker->imageUrl(640, 480);
             $newProject->content = $faker->realTextBetween(1600, 3000);
             $newProject->post_date = $faker->dateTimeThisYear();
             $newProject->save();
