@@ -133,6 +133,10 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index')->with('message', "'Record $post->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
     }
 
+    /**
+     * forceDelete method for delete record permanenttly
+     * Metodo forceDelete per eliminare definitivamente un record   
+     */
     public function forceDelete($id) {
         $post = Post::withTrashed()->findOrFail($id);
         $post->forceDelete();
