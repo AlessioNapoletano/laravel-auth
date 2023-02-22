@@ -25,7 +25,7 @@
         </div>
 
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Crea Post</button>
+            <button type="submit" class="btn btn-{{$buttonClass}}">{{$buttonText}}</button>
         </div>
     </form>
 </form>
