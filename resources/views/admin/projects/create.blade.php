@@ -5,6 +5,6 @@
 @section('content')
     <div class="container my-5">
         @include('admin.projects.partials.error')
-        @include('admin.projects.partials.form', ['method' => 'POST', 'action' => 'admin.projects.store', 'parameter' => '', 'buttonClass' => 'primary', 'buttonText' => 'Crea Post'])
+        @include('admin.projects.partials.form', ['method' => 'POST', 'action' => 'admin.projects.store', 'parameter' => '', 'buttonClass' => 'primary', 'buttonText' => 'Create project'])
     </div>
 @endsection
