@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="container my-5">
+        <!--Print message-->
+    @if (session('message'))
+        <div class="alert alert-{{session('message-class')}} mb-3">
+            {{ session('message') }}
+        </div>
+    @endif
+
         <div class="card">
             <div class="card-header text-center">
               Featured
