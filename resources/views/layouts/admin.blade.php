@@ -46,7 +46,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">{{ __('Project') }}</a>
+                            <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('Project') }}</a>
                         </li>
 
                         <li class="nav-item">
