@@ -25,6 +25,8 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/posts/trashed', [AdminPostController::class, 'trashed'])->name('trashed');
+    Route::post('/posts/{id}/restore', [AdminPostController::class, 'restore'])->name('restore');
+    Route::post('/restore-all', [AdminPostController::class, 'restoreAll'])->name('restore-all');
     Route::resource('posts', AdminPostController::class);
 });
 
