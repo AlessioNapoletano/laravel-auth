@@ -27,6 +27,7 @@
 </head>
 
 <body>
+    {{-- @dd(Route::currentRouteName()) --}}
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -40,21 +41,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+
                     <ul class="navbar-nav me-auto">
+
+                        <!--Routname: welcome-->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('welcome') }}">{{ __('Home') }}</a>
+                            <a class="nav-link {{ (Route::currentRouteName() == 'welcome') ? 'fw-bold' : ''  }}" href="{{ route('welcome') }}">{{ __('Home') }}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('Project') }}</a>
+                            <a class="nav-link {{ (Route::currentRouteName() == 'admin.projects.index') ? 'fw-bold' : ''  }}" href="{{ route('admin.projects.index') }}">{{ __('Project') }}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.trashed-projects') }}">{{ __('Trashed Projects') }}</a>
+                            <a class="nav-link {{ (Route::currentRouteName() == 'admin.trashed-projects') ? 'fw-bold' : ''  }}" href="{{ route('admin.trashed-projects') }}">{{ __('Trashed Projects') }}</a>
                         </li>
 
+                        <!--RouteName: 'admin.posts.index'-->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.posts.index') }}">{{ __('Post') }}</a>
+                            <a class="nav-link {{ (Route::currentRouteName() == 'admin.posts.index') ? 'fw-bold' : ''  }}" href="{{ route('admin.posts.index') }}">{{ __('Post') }}</a>
                         </li>
 
                         <li class="nav-item">
