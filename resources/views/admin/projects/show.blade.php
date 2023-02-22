@@ -23,9 +23,9 @@
                 </h5>
                 <p class="card-text">{{ $project->content }}</p>
                 <div class="button text-center">
-                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-success">Edit</a>
+                    <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-success">Edit</a>
 
-                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="d-inline delete">
+                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST" class="d-inline delete">
                     @csrf
                     @method('DELETE')
 

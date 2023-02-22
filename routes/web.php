@@ -35,9 +35,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
 
     
     Route::get('/projects/trashed', [AdminProjectController::class, 'trashed'])->name('trashed-projects');
-    Route::post('/projects/{id}/restore', [AdminProjectController::class, 'restore'])->name('restore-project');
+    Route::post('/projects/{project}/restore', [AdminProjectController::class, 'restore'])->name('restore-project')->withTrashed();
     Route::post('/restore-all', [AdminProjectController::class, 'restoreAll'])->name('restore-all-projects');
-    Route::delete('/projects/{id}/force-delete', [AdminProjectController::class, 'forceDelete'])->name('force-delete-project');
+    Route::delete('/projects/{project}/force-delete', [AdminProjectController::class, 'forceDelete'])->name('force-delete-project')->withTrashed();
     Route::resource('projects', AdminProjectController::class);
 });
 

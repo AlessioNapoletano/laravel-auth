@@ -35,10 +35,10 @@
                 <td>{{ $project->author }}</td>
                 <td>{{ $project->post_date }}</td>
                 <td>
-                    <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">Show</a>
-                    <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-success">Edit</a>
+                    <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-success">Edit</a>
 
-                    <form class="d-inline delete" action="{{ route('admin.projects.destroy', $project->id)}}" method="POST">
+                    <form class="d-inline delete" action="{{ route('admin.projects.destroy', $project->slug)}}" method="POST">
                     @csrf
                     @method('DELETE')
 
@@ -52,13 +52,16 @@
         </tbody>
       </table>
 
-    <div class="pagination">
-        <span>
-            {{ $projects->links() }}
-        </span>
-    </div>
+    
       
 </div>
+
+<div class="container">
+    <div>
+        {{ $projects->links() }}
+    </div>    
+</div>
+
 
 @endsection
 

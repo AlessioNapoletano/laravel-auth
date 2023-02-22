@@ -134,8 +134,7 @@ class ProjectController extends Controller
      * forceDelete method for delete record permanenttly
      * Metodo forceDelete per eliminare definitivamente un record   
      */
-    public function forceDelete($id) {
-        $project = Project::withTrashed()->findOrFail($id);
+    public function forceDelete(Project $project) {
         $project->forceDelete();
 
         return redirect()->route('admin.projects.index')->with('message', "Record $project->title è stato eliminato definitivamente dall'archivio")->with('message-class', 'danger');
@@ -154,8 +153,8 @@ class ProjectController extends Controller
      * restore method to recover trashed records
      * Metodo restore per recuperare record trashed
      */
-    public function restore($id) {
-        Project::where('id', $id)->withTrashed()->restore();
+    public function restore(Project $project) {
+        $project->restore();
         return redirect()->route('admin.projects.index')->with('message', "'Record è stato ripristinato con successo dal cestino")->with('message-class', 'primary');;
     }
 

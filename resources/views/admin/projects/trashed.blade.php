@@ -31,12 +31,12 @@
                     <td>{{ $project->post_date }}</td>
                     <td>{{ $project->deleted_at }}</td>
                     <td>
-                        <form class="d-inline" action="{{ route('admin.restore-project', $project->id)}}" method="POST">
+                        <form class="d-inline" action="{{ route('admin.restore-project', $project->slug)}}" method="POST">
                             @csrf
                             <button class="btn btn-primary">Restore</button>
                         </form> 
 
-                        <form class="d-inline delete" action="{{ route('admin.force-delete-project', $project->id)}}" method="POST">
+                        <form class="d-inline delete" action="{{ route('admin.force-delete-project', $project->slug)}}" method="POST">
                             @csrf
                             @method('DELETE')
 
