@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController as WelcomeController;
 use App\Models\Post;
@@ -29,6 +30,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::post('/restore-all', [AdminPostController::class, 'restoreAll'])->name('restore-all');
     Route::delete('/posts/{id}/force-delete', [AdminPostController::class, 'forceDelete'])->name('force-delete');
     Route::resource('posts', AdminPostController::class);
+});
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('projects', AdminProjectController::class);
 });
 
 Route::middleware('auth')->group(function () {
