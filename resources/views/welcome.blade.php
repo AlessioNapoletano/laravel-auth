@@ -18,7 +18,7 @@
                         </span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ $post->title }}</h5>
+                        <h5 class="card-title fw-bold text-center">{{ $post->title }}</h5>
                         <p class="card-text">{{ $post->content }}</p>
                     </div>
                 </div>
