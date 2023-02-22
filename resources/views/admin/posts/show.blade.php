@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', "'$post->title' Post")
+
 @section('content')
     <div class="container my-5">
         <div class="card">
@@ -15,7 +17,13 @@
                 <p class="card-text">{{ $post->content }}</p>
                 <div class="button text-center">
                     <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+
+                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
                 
             </div>
