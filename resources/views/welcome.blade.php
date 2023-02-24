@@ -9,7 +9,14 @@
         @foreach ($projects as $project)
             <div class="col-4 d-flex flex-wrap align-items-stretch">
                 <div class="card mb-5">
-                    <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}">
+                    {{-- <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}"> --}}
+                    @if ( $project->isImageAUrl())
+                        <img src="{{ $project->cover_image }}"
+                    @else
+                        <img src="{{ asset('storage/' . $project->cover_image ) }}"
+                    @endif
+                        alt="{{ $project->title }} image" class="img-fluid">
+
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-center mb-3">
                             {{ $project->title }}
