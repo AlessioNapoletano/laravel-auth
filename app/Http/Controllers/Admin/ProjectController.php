@@ -120,7 +120,16 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $dataValidate = $request->validate($this->rules, $this->messages);
-        $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
+
+        if ($request->hasFile('cover_image')){
+
+            if (!$project->isImageAUrl()){
+                Storage::delete($project->cover_image);
+            }
+
+            $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
+        }
+
         $dataValidate['author'] = Auth::user()->name;
         $dataValidate['slug'] = Str::slug($dataValidate['title']);
         $project->update($dataValidate);
@@ -136,6 +145,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if (!$project->isImageAUrl()) {
+            Storage::delete($project->cover_image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('message', "il progetto '$project->title' è stato spostato nel cestino")->with('message-class', 'danger');
