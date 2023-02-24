@@ -19,7 +19,13 @@
               
             </div>
             <div class="card-body">
-                <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}">
+                @if ( $project->isImageAUrl())
+                    <img src="{{ $project->cover_image }}"
+                @else
+                    <img src="{{ asset('storage/' . $project->cover_image ) }}"
+                @endif
+                    alt="{{ $project->title }} image" class="img-fluid">
+                    
                 <h5 class="card-title text-center">
                     <span class="fw-bold">
                         {{ $project->title }}
