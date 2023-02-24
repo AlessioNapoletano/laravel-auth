@@ -9,7 +9,7 @@
         @foreach ($projects as $project)
             <div class="col-4 d-flex flex-wrap align-items-stretch">
                 <div class="card mb-5">
-                    {{-- <img src="{{ $project->cover_image }}" class="card-img-top" alt="{{ $project->title }}"> --}}
+                
                     @if ( $project->isImageAUrl())
                         <img src="{{ $project->cover_image }}"
                     @else
