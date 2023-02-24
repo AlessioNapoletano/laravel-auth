@@ -7,6 +7,7 @@ use App\Models\Project as Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\Str as Str;
+use Illuminate\Support\Facades\Storage as Storage;
 use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
@@ -41,7 +42,9 @@ class ProjectController extends Controller
         'post_date.required' => 'E\' necessario inserire la data di creazione del progetto',
 
         'cover_image' => 'E\' necessario inserire il path dell\'immagine cover del progetto'
-     ];
+    ];
+
+
 
     /**
      * index method for return view index page
@@ -73,9 +76,11 @@ class ProjectController extends Controller
     {
         // dd($request);
         $dataValidate = $request->validate($this->rules, $this->messages);
-        
+
+        $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
         $dataValidate['author'] = Auth::user()->name;
         $dataValidate['slug'] = Str::slug($dataValidate['title']);
+
         $newProject = new Project();
         $newProject->fill($dataValidate);
         $newProject->save();
@@ -115,6 +120,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $dataValidate = $request->validate($this->rules, $this->messages);
+        $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
         $dataValidate['author'] = Auth::user()->name;
         $dataValidate['slug'] = Str::slug($dataValidate['title']);
         $project->update($dataValidate);
