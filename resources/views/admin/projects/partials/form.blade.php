@@ -18,8 +18,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="cover_image" class="form-label">Image path: </label>
-            <input type="text" class="form-control" id="cover_image" name="cover_image" 
+            <label for="cover_image" class="form-label">Post image: </label>
+            <input type="file" class="form-control" id="cover_image" name="cover_image" 
             value="{{ old('cover_image', $project->cover_image) }}" >
         </div>
 
