@@ -21,5 +21,9 @@ class Project extends Model
     {
         return 'slug';
     }
+
+    public function isImageAUrl(){
+        return filter_var($this->cover_image, FILTER_VALIDATE_URL);
+    }
 }
 
