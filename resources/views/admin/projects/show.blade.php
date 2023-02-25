@@ -3,13 +3,12 @@
 @section('title', "Show $project->title Project")
 
 @section('content')
+
+<section class="show-project">
     <div class="container my-5">
+
         <!--Print message-->
-    @if (session('message'))
-        <div class="alert alert-{{session('message-class')}} mb-3">
-            {{ session('message') }}
-        </div>
-    @endif
+        @include('admin.projects.partials.session-message')
 
         <div class="card">
             <div class="card-header text-center">
@@ -50,6 +49,8 @@
             </div>
         </div>
     </div>
+</section>
+    
 @endsection
 
 @section('script')
