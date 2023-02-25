@@ -6,11 +6,7 @@
 <section class="index-admin py-5 mb-5">
     <div class="container">
         <!--Print message-->
-        @if (session('message'))
-            <div class="alert alert-{{session('message-class')}} mb-3">
-                {{ session('message') }}
-            </div>
-        @endif
+        @include('admin.projects.partials.session-message')
         
         @if (session('alert-message'))
             <div id="popup_message" class="d-none" data-type="{{ session('alert-type') }}" data-message="{{ session('alert-message') }}"></div>
