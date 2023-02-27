@@ -13,7 +13,7 @@
     </title>
 
     <!--icon title-->
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/889/889669.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/imgs/pic-profile.jpeg')}}" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

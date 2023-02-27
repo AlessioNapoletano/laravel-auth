@@ -23,11 +23,10 @@
             value="{{ old('cover_image', $project->cover_image) }}" >
         </div>
 
+        
         <div class="mb-3">
             <label for="content" class="form-label">Contenuto del post</label>
-            <textarea type="text" class="form-control" id="content" name="content">
-                {{ old('content', $project->content) }}
-            </textarea>
+            <textarea type="text" class="form-control" id="content" name="content">{{ old('content', $project->content) }}</textarea>
         </div>
 
         <div class="mb-3">
