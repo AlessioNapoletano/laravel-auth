@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project as Project;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Support\Str as Str;
 use Illuminate\Support\Facades\Storage as Storage;
 use Illuminate\Support\Facades\DB;
+
 
 class ProjectController extends Controller
 {
@@ -17,32 +19,32 @@ class ProjectController extends Controller
      * Regole di validazione
      */
 
-     protected $rules = 
-     [
-        'title' => ['required', 'string', 'min:2', 'max:200'],
-        'content' => ['required', 'string', 'min:2'],
-        'post_date' => ['required'],
-        'cover_image' =>['required']
-     ];
+    protected $rules = 
+        [
+         'title' => ['required', 'unique:projects', 'string', 'min:2', 'max:200'],
+         'content' => ['required', 'string', 'min:2'],
+         'post_date' => ['required'],
+         'cover_image' =>['required']
+      ];
 
-     /**
-     * error messages in case of negative validation
-     * messaggi d'errore in caso di validazione negativa
-     */ 
-     protected $messages = 
-     [
-        'title.required' => 'E\' necessario inserire un titolo',
-        'title.min' => 'Il titolo deve contenere almeno 2 caratteri',
-        'title.max' => 'Il titolo può contenere al massimo 200 caratteri',
-        'title.unique' => 'Crea un titolo con nome diverso, in quanto nell\' archivio esiste già questo titolo',
+      /**
+      * error messages in case of negative validation
+      * messaggi d'errore in caso di validazione negativa
+      */ 
+      protected $messages = 
+      [
+         'title.required' => 'E\' necessario inserire un titolo',
+         'title.min' => 'Il titolo deve contenere almeno 2 caratteri',
+         'title.max' => 'Il titolo può contenere al massimo 200 caratteri',
+         'title.unique' => 'Crea un titolo con nome diverso, in quanto nell\' archivio esiste già questo titolo',
 
-        'content.required' => 'E\' necessario inserire un contenuto',
-        'content.min' => 'Il contenuto deve contenere almeno 2 caratteri',
+         'content.required' => 'E\' necessario inserire un contenuto',
+         'content.min' => 'Il contenuto deve contenere almeno 2 caratteri',
 
-        'post_date.required' => 'E\' necessario inserire la data di creazione del progetto',
+         'post_date.required' => 'E\' necessario inserire la data di creazione del progetto',
 
-        'cover_image' => 'E\' necessario inserire il path dell\'immagine cover del progetto'
-    ];
+         'cover_image' => 'E\' necessario inserire il path dell\'immagine cover del progetto'
+        ];
 
 
 
@@ -74,7 +76,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $dataValidate = $request->validate($this->rules, $this->messages);
 
         $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
@@ -119,6 +120,12 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $request->validate(
+             [
+                 'title' => ['required', Rule::unique('posts')->ignore($project->id)]
+             ]
+        );
+
         $dataValidate = $request->validate($this->rules, $this->messages);
 
         if ($request->hasFile('cover_image')){
@@ -127,7 +134,7 @@ class ProjectController extends Controller
                 Storage::delete($project->cover_image);
             }
 
-            $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
+            // $dataValidate['cover_image'] = Storage::put('imgs/', $dataValidate['cover_image']);
         }
 
         $dataValidate['author'] = Auth::user()->name;
