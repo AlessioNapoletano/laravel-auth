@@ -52,23 +52,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link {{ (Route::currentRouteName() == 'admin.projects.index') ? 'fw-bold' : ''  }}" href="{{ route('admin.projects.index') }}">{{ __('Project') }}</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link {{ (Route::currentRouteName() == 'admin.trashed-projects') ? 'fw-bold' : ''  }}" href="{{ route('admin.trashed-projects') }}">{{ __('Trashed Projects') }}</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link {{ (Route::currentRouteName() == 'about-me') ? 'fw-bold' : ''  }}" href="{{ route('about-me') }}">{{ __('About Me') }}</a>
                         </li>
 
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item m-auto">
-                            <a class="nav-link btn btn-primary text-light me-2" href="{{route('admin.projects.create')}}"> Crea nuovo progetto</a>
-                        </li>
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
