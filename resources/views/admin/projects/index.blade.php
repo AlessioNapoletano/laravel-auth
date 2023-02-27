@@ -20,7 +20,7 @@
                     <th scope="col">Author</th>
                     <th scope="col">Post Date</th>
                     <th scope="col">
-                        <a href="{{ route('admin.projects.create')}}" class="btn btn-primary px-5">Create new project</a>
+                        <a href="{{ route('admin.projects.create')}}" class="btn btn-primary px-5"><i class="fa-solid fa-plus me-1"></i> Create new project</a>
                     </th>
                 </tr>
             </thead>
@@ -32,15 +32,19 @@
                     <td>{{ $project->author }}</td>
                     <td>{{ $project->post_date }}</td>
                     <td>
-                        <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-primary">Show</a>
-                        <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-success">Edit</a>
+                        <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-primary">
+                            <i class="fa-solid fa-eye "></i>
+                        </a>
+                        <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-success">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
     
                         <form class="d-inline delete" action="{{ route('admin.projects.destroy', $project->slug)}}" method="POST">
                         @csrf
                         @method('DELETE')
     
                         <button class="btn btn-danger">
-                            Delete
+                            <i class="fa-solid fa-trash"></i>
                         </button>
                         </form>
                     </td>

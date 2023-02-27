@@ -29,7 +29,10 @@
             <textarea type="text" class="form-control" id="content" name="content">{{ old('content', $project->content) }}</textarea>
         </div>
 
-        <div class="mb-3">
+        <div class="button mb-3 d-flex justify-content-between">
+            <a class="btn btn-dark" href="{{ route('admin.projects.index')}}">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
             <button type="submit" class="btn btn-{{$buttonClass}}">{{$buttonText}}</button>
         </div>
     </form>

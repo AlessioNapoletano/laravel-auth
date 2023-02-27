@@ -17,7 +17,10 @@
                     <th scope="col">
                         <form action="{{ route('admin.restore-all-projects') }}" method="POST">
                         @csrf
-                            <button class="btn btn-primary">Ripristina Tutti i Post</button>
+                            <button class="btn btn-primary"> 
+                                <i class="fa-solid fa-recycle me-2"></i>
+                                Ripristina Tutti i Post
+                            </button>
                         </form>
                     </th>
                 </tr>
@@ -33,14 +36,18 @@
                     <td>
                         <form class="d-inline" action="{{ route('admin.restore-project', $project->slug)}}" method="POST">
                             @csrf
-                            <button class="btn btn-primary">Restore</button>
+                            <button class="btn btn-primary">
+                                <i class="fa-solid fa-recycle"></i>
+                            </button>
                         </form> 
 
                         <form class="d-inline delete" action="{{ route('admin.force-delete-project', $project->slug)}}" method="POST">
                             @csrf
                             @method('DELETE')
 
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
                         </form> 
                     </td>
                 </tr>

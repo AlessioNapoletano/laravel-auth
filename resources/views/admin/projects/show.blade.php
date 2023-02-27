@@ -31,14 +31,25 @@
                     </span>
                 </h5>
                 <p class="card-text">{{ $project->content }}</p>
-                <div class="button text-center">
-                    <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-success">Edit</a>
 
-                    <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST" class="d-inline delete">
+                
+                <div class="button d-flex justify-content-between">
+
+                    <a class="btn btn-dark" href="{{ route('admin.projects.index')}}">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+
+                    <a class="btn btn-success text-center" href="{{ route('admin.projects.edit', $project->slug) }}" >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+
+                    <form class="d-inline delete text-center" action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST" >
                     @csrf
                     @method('DELETE')
 
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
                     </form>
                 </div>
                 

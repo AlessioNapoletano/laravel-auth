@@ -54,7 +54,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ (Route::currentRouteName() == 'admin.projects.index') ? 'fw-bold' : ''  }}" href="{{ route('admin.projects.index') }}">{{ __('Project') }}</a>
                         </li>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link {{ (Route::currentRouteName() == 'admin.trashed-projects') ? 'fw-bold' : ''  }}" href="{{ route('admin.trashed-projects') }}">{{ __('Trashed Projects') }}</a>
                         </li>
