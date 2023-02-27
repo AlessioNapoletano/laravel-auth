@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Guest\AboutMeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController as WelcomeController;
 use App\Models\Post;
@@ -21,6 +22,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
+Route::get('/about-me', [AboutMeController::class, 'index'])->prefix('guest')->name('about-me');
 
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
