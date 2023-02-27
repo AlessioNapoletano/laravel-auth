@@ -122,7 +122,7 @@ class ProjectController extends Controller
     {
         $request->validate(
              [
-                 'title' => ['required', Rule::unique('posts')->ignore($project->id)]
+                 'title' => ['required', Rule::unique('projects')->ignore($project->id)]
              ]
         );
 
